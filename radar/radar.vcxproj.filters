@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="radar.cpp" />
+    <ClCompile Include="utils\process\process.cpp">
+      <Filter>utils\process</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\utils.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{dac48c52-96a8-46e7-816c-c048f28fc254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\process">
+      <UniqueIdentifier>{fe50035d-16f3-4748-b6a7-e5180ec48428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\protobuf">
+      <UniqueIdentifier>{d89d7bf9-e1c4-443e-b9f5-8f163d6f9d1f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils\process\process.hpp">
+      <Filter>utils\process</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\utils.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="utils\protobuf\protobuf.proto">
+      <Filter>utils\protobuf</Filter>
+    </None>
+  </ItemGroup>
+</Project>

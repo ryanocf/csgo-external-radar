@@ -1,0 +1,17 @@
+{
+    "enemy": {
+        "active": true,
+        "name": true,
+        "health": true,
+        "weapon": true
+    },
+    "local": {
+        "active": true
+    },
+    "team": {
+        "active": true,
+        "name": true,
+        "health": true,
+        "weapon": true
+    }
+}

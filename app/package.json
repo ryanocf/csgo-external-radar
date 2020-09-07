@@ -1,0 +1,30 @@
+{
+    "name": "faceit_external",
+    "version": "1.0.0",
+    "description": "csgo external radar",
+    "main": "server/server.js",
+    "author": "ryano",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "start": "node server/server.js",
+        "dev": "nodemon server/server.js"
+    },
+    "dependencies": {
+        "@node-steam/vdf": "^2.1.0",
+        "axios": "^0.20.0",
+        "express": "^4.17.1",
+        "socket.io": "^2.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "public/*",
+            "assets/*",
+            "node_modules/*",
+            "*json"
+        ]
+    }
+}

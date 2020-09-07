@@ -1,0 +1,49 @@
+._button-default {
+    border: none;
+    border-bottom: 2px solid $sColor;
+    border-radius: 0;
+    background-color: transparent;
+    color: darken($pColor, 30%);
+
+    &:hover {
+        background-color: $sColor;
+        color: $pColor;
+    }
+
+    &:disabled {
+        border-bottom: 2px solid $error;
+        color: darken($pColor, 30%);
+        &:hover {
+            background-color: transparent;
+            cursor: default;
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .btn-xs-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .btn-sm-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .btn-md-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .btn-lg-block {
+        width: 100% !important;
+        display: block !important;
+    }
+}

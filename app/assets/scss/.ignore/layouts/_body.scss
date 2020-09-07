@@ -1,0 +1,48 @@
+html,
+body {
+    background-color: $BG;
+    color: darken($pColor, 30%);
+    font-family: 'Quicksand', sans-serif !important;
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    color: darken($pColor, 30%);
+    padding-bottom: 2px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: $pColor;
+
+        &:after {
+            width: 100%;
+        }
+    }
+
+    &:after {
+        background-color: $sColor;
+        bottom: 0;
+        content: '';
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 0;
+        transition: width 0.3s ease;
+    }
+}
+
+.a-none {
+    transition: none;
+    &:hover {
+        &:after {
+            display: none;
+        }
+    }
+
+    &:after {
+        display: none;
+    }
+}

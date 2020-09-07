@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+            integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="css/main.min.css" />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="sidebar">
+                <div class="sidebar_title">FACEIT_EXTERNAL</div>
+                <div class="sidebar_tab">
+                    <div class="sidebar_tab_title">something</div>
+                    <div class="sidebar_tab_content"></div>
+                </div>
+            </div>
+            <div id="radar" class="px-0">
+                <div id="players"></div>
+                <div class="map">
+                    <div class="map_no">
+                        <div>NO MAP LOADED</div>
+                    </div>
+                    <img class="map_image" src="" />
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_title">SETTINGS</div>
+                <div class="sidebar_tab">
+                    <div class="sidebar_tab_title">Enemy</div>
+                    <div class="sidebar_tab_content">
+                        <div class="_checkbox">
+                            <div id="setting_enemy_active" class="_box"></div>
+                            <label class="_label">Active</label>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="_checkbox">
+                                    <div
+                                        id="setting_enemy_health"
+                                        class="_box"
+                                    ></div>
+                                    <label class="_label">Health</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="_checkbox">
+                                    <div
+                                        id="setting_enemy_name"
+                                        class="_box"
+                                    ></div>
+                                    <label class="_label">Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="_checkbox">
+                                    <div
+                                        id="setting_enemy_weapon"
+                                        class="_box"
+                                    ></div>
+                                    <label class="_label">Weapon</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar_tab">
+                    <div class="sidebar_tab_title">Team</div>
+                    <div class="sidebar_tab_content">
+                        <div class="_checkbox">
+                            <div id="setting_team_active" class="_box"></div>
+                            <label class="_label">Active</label>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="_checkbox">
+                                    <div
+                                        id="setting_team_health"
+                                        class="_box"
+                                    ></div>
+                                    <label class="_label">Health</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="_checkbox">
+                                    <div
+                                        id="setting_team_name"
+                                        class="_box"
+                                    ></div>
+                                    <label class="_label">Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="_checkbox">
+                                    <div
+                                        id="setting_team_weapon"
+                                        class="_box"
+                                    ></div>
+                                    <label class="_label">Weapon</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar_tab">
+                    <div class="sidebar_tab_title">Local</div>
+                    <div class="sidebar_tab_content">
+                        <div class="_checkbox">
+                            <div id="setting_local_active" class="_box"></div>
+                            <label class="_label">Active</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- socket.io -->
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- utils -->
+        <script src="js/utils.js"></script>
+        <!-- global -->
+        <script src="js/globals.js"></script>
+        <!-- settings -->
+        <script src="js/settings.js"></script>
+        <!-- components -->
+        <script src="js/components/checkbox.js"></script>
+        <!-- map -->
+        <script src="js/map.js"></script>
+        <!-- drawing -->
+        <script src="js/drawing.js"></script>
+        <!-- main -->
+        <script src="js/main.js"></script>
+    </body>
+</html>
