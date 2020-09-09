@@ -1,0 +1,59 @@
+.entity {
+    color: #ffffff;
+    font-family: 'Staatliches', sans-serif !important;
+    letter-spacing: 1px;
+    position: absolute;
+    text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black,
+        -1px -1px 1px black;
+
+    & .dot {
+        border: 1px solid black;
+        border-radius: 50%;
+        display: none;
+        height: 10px;
+        width: 10px;
+
+        &.enemy {
+            background-color: red;
+        }
+
+        &.local {
+            background-color: green;
+        }
+
+        &.team {
+            background-color: blue;
+        }
+    }
+
+    & .health {
+        display: none;
+        position: absolute;
+    }
+
+    & .name {
+        display: none;
+        position: absolute;
+    }
+
+    & .weapon {
+        display: none;
+        position: absolute;
+    }
+}
+
+#players {
+    left: 0;
+    width: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+
+#radar {
+    position: relative;
+}
+
+.resize {
+    height: 100vh;
+}

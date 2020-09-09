@@ -15,24 +15,32 @@
     </head>
     <body>
         <div class="container-fluid d-flex justify-content-center">
-            <div class="sidebar">
-                <div class="sidebar_title">FACEIT_EXTERNAL</div>
+            <div class="sidebar_toggle left"></div>
+            <div class="sidebar_toggle right"></div>
+            <div class="sidebar left">
+                <div class="sidebar_title">
+                    <div>Radar</div>
+                    <div class="sidebar_close">✖</div>
+                </div>
                 <div class="sidebar_tab">
                     <div class="sidebar_tab_title">something</div>
                     <div class="sidebar_tab_content"></div>
                 </div>
             </div>
-            <div id="radar" class="px-0">
-                <div id="players"></div>
-                <div class="map">
+            <div id="radar" class="resize px-0">
+                <div id="players" class="resize"></div>
+                <div class="map resize">
                     <div class="map_no">
                         <div>NO MAP LOADED</div>
                     </div>
-                    <img class="map_image" src="" />
+                    <img class="map_image resize" src="" />
                 </div>
             </div>
-            <div class="sidebar">
-                <div class="sidebar_title">SETTINGS</div>
+            <div class="sidebar right">
+                <div class="sidebar_title">
+                    <div>SETTINGS</div>
+                    <div class="sidebar_close">✖</div>
+                </div>
                 <div class="sidebar_tab">
                     <div class="sidebar_tab_title">Enemy</div>
                     <div class="sidebar_tab_content">
@@ -134,6 +142,7 @@
         <script src="js/settings.js"></script>
         <!-- components -->
         <script src="js/components/checkbox.js"></script>
+        <script src="js/components/sidebar.js"></script>
         <!-- map -->
         <script src="js/map.js"></script>
         <!-- drawing -->

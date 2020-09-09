@@ -37,3 +37,5 @@
 **/Release
 **/Debug
 app/yarn.lock
+
+app/test/

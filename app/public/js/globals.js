@@ -3,12 +3,12 @@ let globals = {
         directory: undefined,
         map: {
             name: undefined,
+            scale: undefined,
             x: undefined,
             y: undefined,
-            scale: undefined,
         },
-        team: undefined,
         lastmap: undefined,
+        team: undefined,
     },
 
     update: function (data) {

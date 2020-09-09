@@ -4,6 +4,13 @@ body {
     color: darken($pColor, 30%);
     font-family: 'Quicksand', sans-serif !important;
     height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    text-decoration: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-user-select: none;
     width: 100%;
 }
 

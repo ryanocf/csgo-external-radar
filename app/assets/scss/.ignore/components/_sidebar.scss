@@ -1,29 +1,142 @@
 .sidebar {
-    width: 100%;
     height: 100%;
+    width: 100%;
 
-    &_title {
-        font-size: 2rem;
-        padding-bottom: 3rem;
+    &_close {
+        display: none;
+        font-size: 20px;
+        padding: 0 5px 0 5px;
+        transition: ease-in-out 0.3s;
+
+        &:hover {
+            color: white;
+        }
     }
 
     &_tab {
         padding: 1rem 0;
 
-        &_title {
-            font-size: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid $sBorder;
-        }
-
         &_content {
             padding: 0.5rem 0;
         }
+
+        &_title {
+            border-bottom: 1px solid $sBorder;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+    }
+
+    &_title {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        font-size: 2rem;
+        justify-content: space-between;
+        padding-bottom: 3rem;
+    }
+}
+
+.left {
+    left: 0;
+    padding-right: 1rem;
+    top: 0;
+}
+
+.right {
+    padding-left: 1rem;
+    right: 0;
+    top: 0;
+}
+
+.sidebar_toggle {
+    align-items: center;
+    background-color: $pBG;
+    cursor: pointer;
+    display: none;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 50px;
+    z-index: 500;
+
+    &.left {
+        border-right: 1px solid $sBorder;
+        padding: 0;
+
+        &::after {
+            content: '⫸';
+            font-size: 36px;
+        }
+    }
+
+    &.right {
+        border-left: 1px solid $sBorder;
+        padding: 0;
+
+        &::after {
+            content: '⫷';
+            font-size: 36px;
+        }
+    }
+}
+
+.animate_left {
+    animation: fade_in_left 1s;
+    animation-fill-mode: forwards;
+    z-index: 500;
+}
+
+.animate_right {
+    animation: fade_in_right 1s;
+    animation-fill-mode: forwards;
+    z-index: 500;
+}
+
+@keyframes fade_in_left {
+    0% {
+        left: -50%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes fade_in_right {
+    0% {
+        right: -50%;
+    }
+
+    100% {
+        right: 0%;
     }
 }
 
 @media only screen and (max-width: 1399.98px) {
     .sidebar {
-        //width: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        position: absolute;
+        width: 50%;
+
+        &_close {
+            display: block;
+        }
+
+        &.left {
+            left: -50%;
+        }
+
+        &.right {
+            right: -50%;
+        }
+    }
+
+    .sidebar_toggle {
+        display: flex;
     }
 }

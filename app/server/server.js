@@ -9,12 +9,15 @@ const globals = require('./globals');
 const vdf = require('@node-steam/vdf');
 const net = require('net');
 const { execSync } = require('child_process');
-
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+fs.mkdir('public', () => {
+    fs.mkdir('public/images', () => {});
+});
 
 const files = {
     settings: 'settings.json',
@@ -24,6 +27,7 @@ let PIPE_PATH =
     '\\\\.\\pipe\\23d339ddef636cb0a5b9d0be60a289bc4ae87cc62cfd12b8f322e6310c1eea66';
 
 var process = net.connect(PIPE_PATH, (pipe) => {
+    console.log();
     console.log('connected to pipe');
 
     process.on('data', (pipe) => {
@@ -63,17 +67,20 @@ var process = net.connect(PIPE_PATH, (pipe) => {
 
                 if (globals.obj.lastmap !== data[key].map) {
                     execSync(
-                        `cd dependencies & texconv.exe -ft JPG -y -o ../public/images "${data[key].directory}\\resource\\overviews\\${data[key].map}_radar.dds"`,
+                        `cd dependencies & texconv.exe -ft JPG -l -nologo -y -o ../public/images "${data[key].directory}\\resource\\overviews\\${data[key].map}_radar.dds"`,
                         { windowsHide: true, timeout: 30000 }
                     );
                     globals.obj.lastmap = data[key].map;
-                    console.log('triggered lastmap');
                 }
             } else {
                 // update entities
                 entity.add(data[key], key);
             }
         }
+    });
+
+    process.on('error', (pipe) => {
+        console.log(error);
     });
 });
 

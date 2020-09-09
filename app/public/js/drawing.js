@@ -412,8 +412,13 @@ let drawing = {
         y *= -1.0;
 
         // the map is a square so don't even bother with dynamic width and shit (not working on mobile atm)
-        x *= window.innerHeight;
-        y *= window.innerHeight;
+        if (window.innerWidth < window.innerHeight) {
+            x *= window.innerWidth;
+            y *= window.innerWidth;
+        } else {
+            x *= window.innerHeight;
+            y *= window.innerHeight;
+        }
 
         return { x: x, y: y };
     },

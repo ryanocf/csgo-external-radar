@@ -1,0 +1,25 @@
+.map {
+    position: relative;
+    width: 100vh;
+
+    &_image {
+        display: none;
+    }
+
+    &_no {
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100vh;
+        z-index: 200;
+
+        & > div {
+            font-size: 4rem;
+            letter-spacing: 1.5;
+        }
+    }
+}
