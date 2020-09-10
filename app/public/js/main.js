@@ -23,7 +23,9 @@ socket.on('update', (_globals, _entity) => {
         map.state('show', _globals.map.name);
     }
 
-    drawing.draw();
+    requestAnimationFrame(() => {
+        drawing.draw();
+    });
 });
 
 if (this.innerWidth < this.innerHeight) {
