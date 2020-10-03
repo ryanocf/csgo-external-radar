@@ -126,7 +126,7 @@ let drawing = {
         if (settings.obj.enemy.active) {
             // loop enemy team
             for (const key in this.obj.entity[enemy_team]) {
-                // check if the enemy is already drawn
+                // check if entity is already drawn
                 let exist = drawn_entities.find((x) => {
                     return x == this.obj.entity[enemy_team][key].id;
                 });
@@ -227,16 +227,21 @@ let drawing = {
         }
 
         if (settings.obj.team.active) {
+            // loop friendly team
             for (const key in this.obj.entity[friend_team]) {
+                // check if entity is local
                 if (this.obj.entity[friend_team][key].local == true) continue;
 
+                // check if entity is already drawn
                 let exist = drawn_entities.find((x) => {
                     return x == this.obj.entity[friend_team][key].id;
                 });
 
+                // if not drawn, create new entity on map
                 if (typeof exist === 'undefined')
                     this.create(this.obj.entity[friend_team][key], 'team');
 
+                // temp entity object
                 let entity = {
                     element: undefined,
                     position: undefined,
@@ -248,60 +253,74 @@ let drawing = {
                     },
                 };
 
+                // set entity.element
                 entity.element = document.querySelector(
                     `[data-id="${this.obj.entity[friend_team][key].id}"]`
                 );
+                // set entity.position
                 entity.position = entity.element.getBoundingClientRect();
 
+                // set entity.children
                 let n = Object.keys(entity.children);
                 for (let i = 0; i < n.length; i++) {
                     entity.children[n[i]] = entity.element.children[i];
                 }
 
+                // scale entity (world pos) to map pos
                 let position = this.scale(
                     this.obj.entity[friend_team][key].position[0],
                     this.obj.entity[friend_team][key].position[1]
                 );
 
+                // correct entity
+                // dot is 10x10px so move 5 to the left and 5 up to center it
                 if (entity.position.x !== position.x - 5)
                     entity.element.style.left = position.x - 5 + 'px';
 
                 if (entity.position.y !== position.y - 5)
                     entity.element.style.top = position.y - 5 + 'px';
 
+                // routine for dot
                 this.feature.dot(entity.children.dot);
 
+                // routine for health
                 if (settings.obj.team.health) {
                     this.feature.health(
                         entity.children.health,
                         this.obj.entity[friend_team][key].health
                     );
                 } else {
+                    // hide health
                     if (entity.children.health.style.display !== 'none')
                         entity.children.health.style.display = 'none';
                 }
 
+                // routine for name
                 if (settings.obj.team.name) {
                     this.feature.name(
                         entity.children.name,
                         this.obj.entity[friend_team][key].name
                     );
                 } else {
+                    // hide name
                     if (entity.children.name.style.display !== 'none')
                         entity.children.name.style.display = 'none';
                 }
 
+                // routine for weapon
                 if (settings.obj.team.weapon) {
                     this.feature.weapon(
                         entity.children.weapon,
                         this.obj.entity[friend_team][key].weapon
                     );
                 } else {
+                    // hide weapon
                     if (entity.children.weapon.style.display !== 'none')
                         entity.children.weapon.style.display = 'none';
                 }
             }
         } else {
+            // delete every drawn entity of team
             let n = drawn_entities.length;
             for (let i = 0; i < n; i++) {
                 if (drawn_entities[i] == local.id) continue;
@@ -317,14 +336,15 @@ let drawing = {
 
         if (settings.obj.local.active) {
             if (typeof local !== 'undefined') {
+                // check if entity is already drawn
                 let exist = drawn_entities.find((x) => {
                     return x == local.id;
                 });
 
-                if (typeof exist === 'undefined') {
-                    this.create(local, 'local');
-                }
+                // if not drawn, create new entity on map
+                if (typeof exist === 'undefined') this.create(local, 'local');
 
+                // temp entity object
                 let entity = {
                     element: undefined,
                     position: undefined,
@@ -333,27 +353,34 @@ let drawing = {
                     },
                 };
 
+                // set entity.element
                 entity.element = document.querySelector(
                     `[data-id="${local.id}"]`
                 );
+                // set entity.position
                 entity.position = entity.element.getBoundingClientRect();
 
                 entity.children.dot = entity.element.children[0];
 
+                // scale entity (world pos) to map pos
                 let position = this.scale(
                     this.obj.entity[friend_team][local.id].position[0],
                     this.obj.entity[friend_team][local.id].position[1]
                 );
 
+                // correct entity
+                // dot is 10x10px so move 5 to the left and 5 up to center it
                 if (entity.position.x !== position.x - 5)
                     entity.element.style.left = position.x - 5 + 'px';
 
                 if (entity.position.y !== position.y - 5)
                     entity.element.style.top = position.y - 5 + 'px';
 
+                // routine for dot
                 this.feature.dot(entity.children.dot);
             }
         } else {
+            // delete local entity
             if (typeof drawn_entities[local.id.toString()] !== 'undefined')
                 this.delete(local.id.toString());
         }
@@ -391,7 +418,7 @@ let drawing = {
                     entity.innerText,
                     '16px Staatliches'
                 );
-                entity.style.left = -(text_width / 2) + 5 / 2;
+                entity.style.left = -(text_width / 2) + 5 / 2 + 'px';
             }
 
             if (entity.style.display !== 'block')
@@ -412,7 +439,7 @@ let drawing = {
                     entity.innerText,
                     '16px Staatliches'
                 );
-                entity.style.left = -(text_width / 2) + 5 / 2;
+                entity.style.left = -(text_width / 2) + 5 / 2 + 'px';
             }
 
             if (entity.style.display !== 'block')

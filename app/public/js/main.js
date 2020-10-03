@@ -28,36 +28,7 @@ socket.on('update', (_globals, _entity) => {
     });
 });
 
-if (this.innerWidth < this.innerHeight) {
-    let resize = document.getElementsByClassName('resize');
-    let n = resize.length;
-    for (let i = 0; i < n; i++) {
-        resize[i].style.height = this.innerWidth + 'px';
-        resize[i].style.width = this.innerWidth + 'px';
-    }
-} else {
-    let resize = document.getElementsByClassName('resize');
-    let n = resize.length;
-    for (let i = 0; i < n; i++) {
-        resize[i].style.height = this.innerHeight + 'px';
-        resize[i].style.width = this.innerHeight + 'px';
-    }
-}
-
+utils.check_sizing();
 window.addEventListener('resize', function () {
-    if (this.innerWidth < this.innerHeight) {
-        let resize = document.getElementsByClassName('resize');
-        let n = resize.length;
-        for (let i = 0; i < n; i++) {
-            resize[i].style.height = this.innerWidth + 'px';
-            resize[i].style.width = this.innerWidth + 'px';
-        }
-    } else {
-        let resize = document.getElementsByClassName('resize');
-        let n = resize.length;
-        for (let i = 0; i < n; i++) {
-            resize[i].style.height = this.innerHeight + 'px';
-            resize[i].style.width = this.innerHeight + 'px';
-        }
-    }
+    utils.check_sizing();
 });
