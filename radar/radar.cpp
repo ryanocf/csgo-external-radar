@@ -338,7 +338,7 @@ int main()
 			const auto weapon_name = strcmp(weapon_names[weapon_index], "none") ? weapon_names[weapon_index] : "KNIFE";
 			
 			auto radar = process->read<DWORD_PTR>(radar_base);
-			radar = process->read<DWORD_PTR>(radar + 0x74);
+			radar = process->read<DWORD_PTR>(radar + 0x78);
 			const char* name[128];
 			ReadProcessMemory(process->process, reinterpret_cast<LPCVOID>(radar + 0x174 * (i + 2) + 0x18), &name, sizeof(name), nullptr);
 			
