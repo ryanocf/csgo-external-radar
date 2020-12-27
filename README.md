@@ -57,5 +57,6 @@ nexe -i server/server.js -t 10.16.0 -r public --verbose
 Mortale <br>
 [unknowncheats](https://www.unknowncheats.me/forum/members/692168.html) | [Github](https://github.com/M0rtale) <br><br>
 https://github.com/frk1/hazedumper <br>
+https://github.com/microsoft/DirectXTex/tree/master/Texconv <br>
 https://github.com/node-steam/vdf <br>
 https://github.com/nlohmann/json
