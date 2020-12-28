@@ -13,7 +13,7 @@ ___
 
 ## Preview
 
-<img src="https://i.imgur.com/1D5FeCW.gif" />
+![](preview.gif)
 
 ## Build
 
