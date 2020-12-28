@@ -11,6 +11,10 @@
 
 ___
 
+## Preview
+
+<img src="https://i.imgur.com/1D5FeCW.gif" />
+
 ## Build
 
 Radar:
