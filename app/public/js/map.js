@@ -19,7 +19,7 @@ let map = {
             case 'show':
                 map.children.map_no.style.display = 'none';
                 map.children.map_image.style.display = 'flex';
-                map.children.map_image.src = `images/${_map}_radar.JPG`;
+                map.children.map_image.src = globals.obj.image;
                 break;
 
             case 'hide':
@@ -28,7 +28,7 @@ let map = {
                 break;
 
             case 'change':
-                map.children.map_image.src = `images/${_map}_radar.JPG`;
+                map.children.map_image.src = globals.obj.image;
                 break;
         }
     },

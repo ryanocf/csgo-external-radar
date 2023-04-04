@@ -14,12 +14,14 @@ socket.on('update', (_globals, _entity) => {
     }
     globals.update(_globals);
 
-    if (_globals.map.name === '' || typeof _globals.map.name === 'undefined') {
-        map.state('hide', _globals.map.name);
-    } else if (
-        _globals.map.name !== '' &&
-        typeof _globals.map.name !== 'undefined'
+    if (
+        _globals.image === '' ||
+        typeof _globals.image === 'undefined' ||
+        _globals.map.name === '' ||
+        typeof _globals.map.name === 'undefined'
     ) {
+        map.state('hide', _globals.map.name);
+    } else {
         map.state('show', _globals.map.name);
     }
 

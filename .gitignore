@@ -43,3 +43,4 @@ app/test/
 csgo-external-radar.zip
 csgo-external-radar
 app/package-lock.json
+dist

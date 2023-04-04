@@ -8,6 +8,7 @@ let obj = {
     },
     last_map: undefined,
     team: undefined,
+    image: undefined,
 };
 
 module.exports = {

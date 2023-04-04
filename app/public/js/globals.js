@@ -7,11 +7,16 @@ let globals = {
             x: undefined,
             y: undefined,
         },
-        lastmap: undefined,
+        last_map: undefined,
         team: undefined,
+        image: undefined,
     },
 
     update: function (data) {
+        if (data.image === 'SAME_MAP') {
+            data.image = this.obj.image;
+        }
+
         this.obj = { ...data };
         return true;
     },

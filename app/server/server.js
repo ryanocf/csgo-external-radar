@@ -10,10 +10,13 @@ const vdf = require('@node-steam/vdf');
 const net = require('net');
 const { execSync } = require('child_process');
 const app = express();
+const cors = require('cors');
+app.use(cors());
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
 const server = http.createServer(app);
 const io = socketio(server);
-
-app.use(express.static(path.join(__dirname, '..', 'public')));
+const _process = require('process');
 
 fs.mkdir('public', () => {
     fs.mkdir('public/images', () => {});
@@ -22,6 +25,8 @@ fs.mkdir('public', () => {
 const files = {
     settings: 'settings.json',
 };
+
+const connections = {};
 
 let PIPE_PATH =
     '\\\\.\\pipe\\23d339ddef636cb0a5b9d0be60a289bc4ae87cc62cfd12b8f322e6310c1eea66';
@@ -65,12 +70,26 @@ var process = net.connect(PIPE_PATH, (pipe) => {
                     console.log(err);
                 }
 
-                if (globals.obj.lastmap !== data[key].map) {
+                if (globals.obj.last_map !== data[key].map) {
                     execSync(
                         `cd dependencies & texconv.exe -ft JPG -l -nologo -y -o ../public/images "${data[key].directory}\\resource\\overviews\\${data[key].map}_radar.dds"`,
                         { windowsHide: true, timeout: 30000 }
                     );
-                    globals.obj.lastmap = data[key].map;
+                    globals.obj.image = `data:image/jpg;base64,${fs.readFileSync(
+                        path.join(
+                            _process.cwd(),
+                            'public',
+                            'images',
+                            `${data[key].map}_radar.jpg`
+                        ),
+                        'base64'
+                    )}`;
+                    globals.obj.last_map = data[key].map;
+                    console.log('triggered new map');
+
+                    Object.keys(connections).forEach((id) => {
+                        connections[id].sentImage = false;
+                    });
                 }
             } else {
                 // update entities
@@ -102,9 +121,27 @@ io.on('connection', (socket) => {
         );
     });
 
-    setInterval(() => {
-        socket.emit('update', globals.obj, entity.obj);
+    const mainInterval = setInterval(() => {
+        if (connections[socket.id] && socket.disconnected) {
+            clearInterval(connections[socket.id].interval);
+            delete connections[socket.id];
+            return;
+        }
+
+        let obj = { ...globals.obj };
+
+        if (connections[socket.id].sentImage) {
+            obj.image = 'SAME_MAP';
+        }
+
+        socket.emit('update', obj, entity.obj);
+        connections[socket.id].sentImage = true;
     }, 5);
+
+    connections[socket.id] = {
+        interval: mainInterval,
+        sentImage: false,
+    };
 
     socket.on('connect_timeout', (socket) => {
         console.log('timeout');
@@ -114,9 +151,13 @@ io.on('connection', (socket) => {
         console.log('error');
     });
 
-    socket.on('disconnect', (socket) => {
+    socket.on('disconnect', (reason, details) => {
         console.log('disconnected');
     });
+});
+
+app.get('/', (req, res) => {
+    res.sendFile('public/index.html');
 });
 
 const PORT = 3000 || process.env.PORT;
