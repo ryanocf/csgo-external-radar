@@ -180,7 +180,7 @@ int main()
 
 	while (!process->window)
 	{
-		process->window = FindWindowA(nullptr, "Counter-Strike: Global Offensive");
+		process->window = FindWindowA(nullptr, "Counter-Strike: Global Offensive - Direct3D 9");
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 
