@@ -328,9 +328,9 @@ int main()
 			if (bdormant)
 				continue;
 			
-			const auto active_weapon = process->read<DWORD>(entity + 0x2EF8);
+			const auto active_weapon = process->read<DWORD>(entity + 0x2F08);
 			const auto weapon_entity = process->read<DWORD>(entity_list + ((active_weapon & 0xFFF) - 1) * 0x10);
-			auto weapon_index = process->read<short>(weapon_entity + 0x2FAA);
+			auto weapon_index = process->read<short>(weapon_entity + 0x2FBA);
 
 			if (weapon_index > 64 || weapon_index < 1)
 				weapon_index = 42;
