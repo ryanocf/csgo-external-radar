@@ -361,11 +361,15 @@ let drawing = {
                 entity.position = entity.element.getBoundingClientRect();
 
                 entity.children.dot = entity.element.children[0];
+                
+                let pos_obj = this.obj.entity[friend_team].find((x) => {
+                    return x.id == local.id;
+                });
 
                 // scale entity (world pos) to map pos
                 let position = this.scale(
-                    this.obj.entity[friend_team][local.id].position[0],
-                    this.obj.entity[friend_team][local.id].position[1]
+                    pos_obj.position[0],
+                    pos_obj.position[1]
                 );
 
                 // correct entity
